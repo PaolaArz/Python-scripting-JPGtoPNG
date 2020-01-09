@@ -13,8 +13,6 @@ if not os.path.exists(new_dir):
 
 #convert images to png and saves into new folder
 for filename in os.listdir(original_dir):
-	print(filename)
-	im = Image.open(original_dir + '/' + filename)
-	rgb_im = im.convert('RGB')
-	name = filename[:-4]
-	rgb_im.save(new_dir + '/' + name + '.png')
+	im = Image.open(f'{original_dir}/{filename}')
+	name = os.path.splitext(filename)[0]
+	im.save(f'{new_dir}/{name}.png', 'png')
